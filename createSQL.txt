@@ -1,0 +1,49 @@
+-- Table: edetabel
+CREATE TABLE edetabel (
+    id int  NOT NULL AUTO_INCREMENT,
+    sportlane_id int  NOT NULL,
+    vanusegrupp varchar(10)  NOT NULL,
+    punktid_sum int  NOT NULL,
+    hooaeg int  NOT NULL,
+    CONSTRAINT edetabel_pk PRIMARY KEY (id)
+);
+
+-- Table: konto
+CREATE TABLE konto (
+    id int  NOT NULL AUTO_INCREMENT,
+    email varchar(255)  NOT NULL,
+    password_hash varchar(255)  NOT NULL,
+    CONSTRAINT konto_pk PRIMARY KEY (id)
+);
+
+-- Table: sportlane
+CREATE TABLE sportlane (
+    id int  NOT NULL AUTO_INCREMENT,
+    eesnimi varchar(255)  NOT NULL,
+    perenimi varchar(255)  NOT NULL,
+    sugu varchar(20)  NOT NULL,
+    CONSTRAINT sportlane_pk PRIMARY KEY (id)
+);
+
+-- Table: tulemus
+CREATE TABLE tulemus (
+    id int  NOT NULL AUTO_INCREMENT,
+    sportlane_id int  NOT NULL,
+    ala varchar(20)  NOT NULL,
+    vanusegrupp varchar(10)  NOT NULL,
+    meetrid decimal(5,2)  NOT NULL,
+    punktid int  NOT NULL,
+    hooaeg int  NOT NULL,
+    CONSTRAINT tulemus_pk PRIMARY KEY (id)
+);
+
+-- foreign keys
+-- Reference: edetabel_sportlane (table: edetabel)
+ALTER TABLE edetabel ADD CONSTRAINT edetabel_sportlane FOREIGN KEY edetabel_sportlane (sportlane_id)
+    REFERENCES sportlane (id);
+
+-- Reference: tulemus_sportlane (table: tulemus)
+ALTER TABLE tulemus ADD CONSTRAINT tulemus_sportlane FOREIGN KEY tulemus_sportlane (sportlane_id)
+    REFERENCES sportlane (id);
+
+-- End of file.

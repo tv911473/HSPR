@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/styles.css">
+    <title>HSPR Edetabel</title>
+    <style>
+        /* Row highlighting */
+        .leaderboard-table tbody tr:hover {
+            background-color: #948d8d;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainContainer">
+        <header>
+            <a href="http://heitjateseeriavoistlus.ee/" target="_blank"><img src="/public/pics/profile.png" alt="pilt" id="headerImg"></a>
+            <div class="headerNav">
+                <a href="/hspr">Edetabel</a>
+                <% if (user) { %>
+                    <a href="/hspr/addresults">Tulemuste sisestamine</a>
+                    <a href="/hspr/allresults">Kõik tulemused</a>
+                <% } %>
+            </div>
+            <div class="headerTitle">
+                <h1>Edetabel</h1>
+            </div>
+            <div class="headerLogin">
+                <% if (user) { %>
+                    <button id="logoutButton">Logi välja</button>
+                <% } else { %>
+                    <button id="loginButton">Logi sisse</button>
+                <% } %>
+            </div>
+        </header>
+        <div class="bodyWindow">
+            <div class="bodyGroup">
+                <div class="filterContainer">
+                    <form id="leaderboardFilterForm">
+                        <div class="filterContainer-item">
+                            <input type="text" id="name" name="name" class="search_option" placeholder="Sisesta nimi">
+                        </div>
+                        <div class="filterContainer-item">
+                            <select id="sugu" name="Sugu" class="search_option">
+                                <option value="" selected>Vali sugu</option>
+                                <option value="mees">Mees</option>
+                                <option value="naine">Naine</option>
+                            </select>
+                        </div>
+                        <div class="filterContainer-item">
+                            <select id="vanusegrupp" name="Vanusegrupp" class="search_option">
+                                <option value="" selected>Vali vanusegrupp</option>
+                                <option value="U12">U12</option>
+                                <option value="U14">U14</option>
+                                <option value="U16">U16</option>
+                                <option value="U18">U18</option>
+                                <option value="U20">U20</option>
+                                <option value="U23">U23</option>
+                                <option value="SEN">SEN</option>
+                            </select>
+                        </div>
+                        <div class="filterContainer-item">
+                            <select id="seasonInput" class="search_option">
+                                <!-- Options will be dynamically populated -->
+                            </select>
+                        </div>
+                        <div class="filterContainer-item">
+                            <button type="submit" id="leaderboardFilter">Otsi</button>
+                        </div>
+                    </form>
+                </div>
+    
+                <div id="leaderboardContainer" class="tableContainer">
+                    <h2 id="chosenSeason"></h2>
+                    <div id="leaderboard">
+                            <table class="leaderboard-table">
+                                <thead>
+                                    <tr>
+                                    <th class="small-column">Jrk</th>
+                                    <th>Eesnimi</th>
+                                    <th>Perenimi</th>
+                                    <th>Sugu</th>
+                                    <th>Vanusegrupp</th>
+                                    <th>Punktid</th>
+                                </tr>
+                                </thead>
+                                <tbody id="leaderboardTableBody">
+                                    <!-- Dynamic rendering from script -->
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal for athlete details -->
+        <div id="athleteDetailsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h4>Sportlase tulemuse detailid</h4>
+                <h5 id="athleteName">Sportlase nimi</h5>
+                <table class="modal-table">
+                    <thead>
+                        <tr>
+                            <th>Ala</th>
+                            <th>Punktid</th>
+                            <th>Meetrid</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pointsDetailsBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <footer id="footer">
+        <a href="https://www.tlu.ee/dt" target="_blank"><img src="/public/pics/dti.svg" alt="TLÜ DTI"></a>
+    </footer>
+    <script type="module" src="/public/scripts/leaderboardscript.js"></script>
+    <script src="/public/buttonFunc.js"></script>
+</body>
+</html>

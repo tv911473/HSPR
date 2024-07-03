@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/styles.css">
+    <title>HSPR Tulemuste sisestus</title>
+</head>
+<body class="addResultBG">
+    <div id="mainContainer">
+        <header>
+            <a href="http://heitjateseeriavoistlus.ee/" target="_blank"><img src="/public/pics/profile.png" alt="pilt" id="headerImg"></a>
+            <div class="headerNav">
+                <a href="/hspr">Edetabel</a>
+                <a href="/hspr/addresults">Tulemuste sisestamine</a>
+                <a href="/hspr/allresults">Kõik tulemused</a>
+            </div>
+            <div class="headerTitle">
+                <h1>Tulemuste sisestamine</h1>
+            </div>
+            <div class="headerLogin">
+                <button id="logoutButton">Logi välja</button>
+            </div>
+        </header>
+        <div class="bodyWindow">
+            <form id="resultsForm">
+                <div class="addResG1">
+                    <div class="addResG1-item">
+                        <label for="vanusegrupp">Vanusegrupp:</label>
+                        <select id="vanusegrupp" name="vanusegrupp" oninvalid="this.setCustomValidity('Vali vanusegrupp')" oninput="this.setCustomValidity('')" required>
+                            <option value="" disabled selected>Vali...</option>
+                            <option value="U12">U12</option>
+                            <option value="U14">U14</option>
+                            <option value="U16">U16</option>
+                            <option value="U18">U18</option>
+                            <option value="U20">U20</option>
+                            <option value="U23">U23</option>
+                            <option value="SEN">SEN</option>
+                        </select>
+                    </div>
+    
+                    <div class="addResG1-item">
+                        <label for="ala">Ala:</label>
+                        <select id="ala" name="ala" oninvalid="this.setCustomValidity('Vali ala')" oninput="this.setCustomValidity('')" required>
+                            <option value="" disabled selected>Vali...</option>
+                            <option value="kuul">Kuulitõuge</option>
+                            <option value="ketas">Kettaheide</option>
+                            <option value="vasar">Vasaraheide</option>
+                            <option value="oda">Odavise</option>
+                            <option value="hüpe">Hüpe</option>
+                        </select>
+                    </div>
+                </div>
+                <hr size="2px" width ="800px" color="#97979775"> 
+                <div class="labelContainer">
+                    <label for="eesnimi" class="label">Eesnimi:</label>
+                    <label for="perenimi" class="label">Perenimi:</label>
+                    <label for="sugu" class="label">Sugu:</label>
+                    <label for="meetrid" class="label">Tulemus:</label>
+                    <label class="label empty-label"></label> <!-- Placeholder for the remove button to help alignment -->
+                </div>
+                <div id="athleteEntryContainer" class="addResG2">
+                    <div id="athleteRowTemplate" class="athlete-row addResG2-row">
+                        <div class="addResG2-item">
+                            <input type="text" class="eesnimi-input" name="eesnimi" placeholder="Eesnimi" autocomplete="off" required>
+                            <ul class="suggestions eesnimi-suggestions"></ul>
+                        </div>
+    
+                        <div class="addResG2-item">
+                            <input type="text" class="perenimi-input" name="perenimi" placeholder="Perenimi" autocomplete="off" required>
+                            <ul class="suggestions perenimi-suggestions"></ul>
+                        </div>
+    
+                        <div class="addResG2-item">
+                            <select name="sugu" required>
+                                <option value="" disabled selected>Vali...</option>
+                                <option value="mees">Mees</option>
+                                <option value="naine">Naine</option>
+                            </select>
+                        </div>
+    
+                        <div class="addResG2-item">
+                            <input type="number" step="0.01" name="meetrid" placeholder="Meetrid" oninvalid="this.setCustomValidity('Sisesta meetrid 2 komakohaga')" oninput="this.setCustomValidity('')"required>
+                        </div>
+    
+                        <!-- Placeholder for the "Eemalda" button in the first row -->
+                        <div class="addResG2-item placeholder-button"></div>
+                    </div>
+                </div>
+                
+                <div class="saveResultButtons">
+                    <button type="button" id="addAthleteButton">+</button>
+                    <button type="submit" id="submit">Salvesta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <footer id="footer">
+        <a href="https://www.tlu.ee/dt" target="_blank"><img src="/public/pics/dti.svg" alt="TLÜ DTI"></a>
+    </footer>
+    <script type="module" src="/public/scripts/addresultscript.js"></script>
+    <script src="/public/buttonFunc.js"></script>
+</body>
+</html>

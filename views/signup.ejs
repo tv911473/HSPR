@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
+    <link rel="stylesheet" href="../../public/styles.css">
+    <title>Registreeru</title>
+</head>
+<body>
+    <div id="mainContainer">
+        <header>
+            <a href="http://heitjateseeriavoistlus.ee/" target="_blank"><img src="/public/pics/profile.png" alt="pilt" id="headerImg"></a>
+            <div class="headerNav">
+                <a href="/hspr">Edetabel</a>
+            </div>
+            <div class="headerTitle">
+                <h1>Registreeru</h1>
+            </div>
+            <div class="headerLogin">
+                <button id="loginButton">Logi sisse</button>
+            </div>
+        </header>
+        <div class="bodyWindow">
+            <div class="logGroup">
+                <form action="/hspr/api/user/signup" method="POST" novalidate>
+                    <div class="logGroup-item">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" placeholder="email@näide.ee" required>
+                    </div>
+                    <div class="logGroup-item">
+                        <label for="password">Salasõna:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="logGroup-item">
+                        <label for="confirm_password">Kinnita salasõna:</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                    </div>
+                    <div class="logGroup-item">
+                        <button type="submit">Loo konto</button>
+                    </div>
+                    <div id="error-message" style="display:flex;"></div>
+    
+                </form>
+    
+            </div>
+    
+        </div>
+    </div>
+    
+    <footer id="footer">
+        <a href="https://www.tlu.ee/dt" target="_blank"><img src="/public/pics/dti.svg" alt="TLÜ DTI"></a>
+    </footer>
+    <script src="/public/scripts/userscript.js"></script>
+    <script src="/public/buttonFunc.js"></script>
+</body>
+</html>

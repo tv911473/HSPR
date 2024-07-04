@@ -77,6 +77,7 @@ function hasValidEventCounts(pointsData) {
     let eventCounts = Object.values(pointsData).map(points => points.length);
     eventCounts.sort((a, b) => b - a);
 
+    const hasRequiredJumps = pointsData['hüpe'] && pointsData['hüpe'].length >= 2;
+
     // Check for the 3+2+1 & 2 jumps pattern
-    return eventCounts[0] >= 3 && eventCounts[1] >= 2 && eventCounts[2] >= 1 && pointsData['hüpe'].length >= 2;
-}
+    return eventCounts[0] >= 3 && eventCounts[1] >= 2 && eventCounts[2] >= 1 && hasRequiredJumps;}

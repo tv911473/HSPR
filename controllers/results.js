@@ -189,8 +189,8 @@ exports.deleteResult = (req, res) => {
     });
 };
 
-// Schedulede delete for "tulemus" tabel at 1. december
-cron.schedule('0 0 1 12 *', () => {
+// Schedulede delete for "tulemus" tabel at 1st & 8th of december
+cron.schedule('0 0 1,8 12 *', () => {
     const season = new Date().getFullYear();
     const deleteQuery = `
         DELETE FROM tulemus
